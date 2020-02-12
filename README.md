@@ -22,16 +22,26 @@ When none or meaningless command line arguments are given to the program(s) the 
 ## Example
 
 A (directory)
+
  |- B (directory)
    |- kagurachan.exe ( 15 MB )
+   
    |- C (directory)
+   
       |- beware(a special file like smybolic link or pipe) ( 0 KB )
+      
       |- squirtle.pu ( 300 KB )
+      
    |- gintoki.png ( 3 MB )
+   
  |- blabla.txt ( 2 MB)
+ 
  |- lalala.exe ( 8 MB )
+ 
  |- D (directory)
+ 
  |- beware2(a special file like smybolic link or pipe) ( 0 KB )
+ 
  |- okletsgo.sh (1 MB)
  
  
@@ -39,17 +49,17 @@ The order of output doesn’t matter, just output the sizes correctly.
 
 **Output of “buNeDu -z A” gives total sizes:**
 
-Special file  beware
+Special file    beware
 
-300           A/B/C
+300             A/B/C
 
-18732         A/B
+18732           A/B
 
-0             A/D
+0               A/D
 
-Special file  beware2
+Special file    beware2
 
-29996         A
+29996           A
 
 
 
