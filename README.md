@@ -13,8 +13,24 @@ The function outputs path along with other information obtained by calling stat 
 The function returns the size in blocks of the file given by path or -1 if path does not corresponds to an ordinary file. 
 
 
-The program buNeDu when called with the argument rootpath as * buNeDu [-z] rootpath * with the function calls sizepathfun and postOrderApply should output the size of each directory followed by its pathname. When used with no extra arguments the size of the directory does not count the size of the subtrees of that directory. 
-However when additional argument ‘-z ‘ is introduced the size of the directory contains the sizes of all subtrees that the directory contains (note the difference). 
-If the pathname is a specific file, print an informative message but no size. 
+ The program buNeDu when called with the argument rootpath as * buNeDu [-z] rootpath * with the function calls sizepathfun and postOrderApply should output the size of each directory followed by its pathname. When used with no extra arguments the size of the directory does not count the size of the subtrees of that directory. 
+ However when additional argument ‘-z ‘ is introduced the size of the directory contains the sizes of all subtrees that the directory contains (note the difference). 
+ If the pathname is a specific file, print an informative message but no size. 
 
-When none or meaningless command line arguments are given to the program(s) the output should warn the user and print a usage, informing the user how the program should actually be called.
+ When none or meaningless command line arguments are given to the program(s) the output should warn the user and print a usage, informing the user how the program should actually be called.
+
+# Du-Shell-Utility with fork
+Creating a new process for each directory to get the sizes.
+
+**Each created processes will be responsible for:**
+- Finding the size of the directory given by parent process (adding the sizes of subdirectories if -z option is given)(using pipe is forbidden),
+- Creating new processes to find the sizes of subdirectories,
+- Writing the PID of the process, size(in kilobytes(preferred) or bytes) and path of the directory to a single global file “<#studentid>sizes.txt”(example: 111044002sizes.txt). use a file lock as multiple processes shouldn’t write to the same file at the same time. 
+
+After the child processes write all the size of all directories, main process will read the file, find the total sizes if needed and output to standard output. The order of output is important and it should be postorder. Finally, it will output the number of created child processes and exit.
+Do not add the sizes of files or the directories pointed by a symbolic link. Just say that there is a special file. Do not show size of any file explicitly, just directories.
+The program buNeDuFork with the argument rootpath will be called like below. The rootpath can be any path on the system, not just a path in the current directory.
+./buNeDuFork [-z] rootpath
+
+While executing, do not communicate between any process to find total size for -z option, just write your local result to “<#studentid>sizes.txt” file. When all child processes finish, parse that file calculate to total sizes.
+
