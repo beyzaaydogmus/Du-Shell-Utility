@@ -37,7 +37,7 @@ A (directory)
  
 The order of output doesn’t matter, just output the sizes correctly.
 
-**Output of “buNeDu -z A” gives total sizes:
+**Output of “buNeDu -z A” gives total sizes: **
 Special file  beware
 300           A/B/C
 18732         A/B
@@ -46,7 +46,7 @@ Special file  beware2
 29996         A
 
 
-**Output of “buNeDu A” don’t add subdirectory sizes:
+**Output of “buNeDu A” don’t add subdirectory sizes: **
 Special file  beware
 300           A/B/C
 18432         A/B
